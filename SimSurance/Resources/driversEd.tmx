@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="40" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="meta_tiles" tilewidth="64" tileheight="64">
+  <image source="meta_tiles.png" width="134" height="68"/>
+  <tile id="0">
+   <properties>
+    <property name="collision" value="YES"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="cone" value="YES"/>
+    <property name="wall" value="YES"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="vehicles-hd" tilewidth="64" tileheight="64" spacing="3">
+  <image source="vehicles-hd.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="52" name="barrier2" tilewidth="64" tileheight="64">
+  <image source="barrier2.png" width="128" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="barrier" value="YES"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="barrier" value="YES"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="barrier" value="YES"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="barrier" value="YES"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="56" name="tile_map" tilewidth="64" tileheight="64">
+  <image source="tile_map.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="base" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmrlOw0AQhtfiahF3zyU6bkEJNCBxBNFwVBHvQc8bINGAoEyBBCVQcDZAwV1DgCfgKPlXmUiLtTaxs8azaItPjnaTyfjzZHfipN4TogGMCSG2QA7sKOQ0Y35yCttAIN67KJ8P8AkqvUJuYTkkiTynUbAJVokFsAjqkVsb+cuCfXAQk0OwDmoRr8oA1aCGrq/MbS0llshfNsCfzG+O/F6Ay5hckT9Zf40GaALNdH1Vf6fgXHOecvyMMDkf5q+V8ls26E/WX7sBOkCnxt8duNecvxx7SGA+zF8fcuun+pPz1+A4JrfkrxvxKsBAmQwCj/Lj4E+3/slxufYVP79P4CYmefJX5xUc9nqF69NDj3t8YyrFcf/zpLt5wdefuq9NaGJGZVz83I/D9u/f5lXU3Dj52zTg7K9x/uz0p9s/dP6ORPS17ySBGEG8gLeA8VfC5HxUf3IPfo7IbQIxuFBc0yci+IvTu5iOEUaX9zdHP6X4i9PD5BOIwY2REv05fjIEJsHsP/GXxvffDaHvX7KaOJxo0axDafQvtvrTwd0fp/7Pxvrj3v9x8se9/+Nefzb2f9z9ccLG+uOO8+fqz9WfHff/bKw/1/+5/s/1f/bWHydsrD/upOFvxVJ/XOrPVn/c68/d/zPvz/V/5ftz/V98f67/s3v/eAzgi+bT+P9LkL9dMMzAGWfC/K2QQ/n7eoaOKpkS8b+uXKbAtMJMAu9RKnsh/r4BEvPctw==
+  </data>
+ </layer>
+ <layer name="collision" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7D6/9N+0FkwgSQAAAAAAAAAAAAAAAD/THnNAjZgAAg=
+  </data>
+ </layer>
+ <objectgroup name="player" width="80" height="40">
+  <object name="player" x="320" y="2304" width="64" height="64"/>
+ </objectgroup>
+ <layer name="coneLayout" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmEkOAjEMBEf8/9EcOeBA7G4viV0SFxT3WEW24XmGYbiJ1+Zn+EbjpbrD3XnAmhuWuqoOkb5Y/nZ+m4r+0J6Y/ixjMmH009Xfql/tftfR306vu7Xd/CHupLGd/KHupPFd/DHcSTUd/LHcSXXR/iLu9tq+kLxIf+gzGPXszFv9efQjZdzoz8udlOPtD9nvGOejNWc3P/scYmZ6u5PybvFndZexRqS6TH+IO5TT/WW6Q3Ki/Gnv15HukKwIfx71HnuiBQ9/SA5z3rHP7J1nZK6Jf+M18yTCnfQcj3sWa/1Uc3ca0WfK6Wjn6Lj7wN47OzHu7Iw7O+POzsoF+33hVn75q8rqf7CMnscf3ovm+wpU2ltO9DfYeANr1gJ9
+  </data>
+ </layer>
+ <layer name="straightBarrier" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1LEJwDAMRUEPFTv7b2YPIIPgN4HcgRq1emgMAAAAAAAAAAAAEs+Z2dhRW2fexo6a/jL6y+gv84X+Ovdy07vOvfyUO/1l9Pc/G0d9CF0=
+  </data>
+ </layer>
+ <objectgroup name="hummer" width="80" height="40">
+  <object name="npc" x="704" y="2240" width="64" height="128"/>
+ </objectgroup>
+</map>
