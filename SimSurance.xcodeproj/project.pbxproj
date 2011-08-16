@@ -48,7 +48,6 @@
 		A2358F0713D6922E008A5431 /* steering_wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = A2358F0613D6922E008A5431 /* steering_wheel.png */; };
 		A2358F0913D69544008A5431 /* neighborhoodDriving.tmx in Resources */ = {isa = PBXBuildFile; fileRef = A2358F0813D69544008A5431 /* neighborhoodDriving.tmx */; };
 		A2358F1513D69E62008A5431 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A2358F1413D69E62008A5431 /* Default-Landscape~ipad.png */; };
-		A2358F1713D6A2E0008A5431 /* Screen shot 2011-07-20 at 12.39.55 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = A2358F1613D6A2E0008A5431 /* Screen shot 2011-07-20 at 12.39.55 AM.png */; };
 		A2358F1913D6AAB6008A5431 /* splash1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2358F1813D6AAB6008A5431 /* splash1.png */; };
 		A247EBD513A329A400545558 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A247EBD413A329A400545558 /* QuartzCore.framework */; };
 		A247EBD713A329A400545558 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A247EBD613A329A400545558 /* OpenGLES.framework */; };
@@ -300,7 +299,6 @@
 		FE27AF7713E5B2F900D7488A /* tile_map.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF7313E5B2F900D7488A /* tile_map.png */; };
 		FE27AF7B13E5B34700D7488A /* house_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF7913E5B34700D7488A /* house_tiles.png */; };
 		FE27AF7E13E5C53600D7488A /* iconProto.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF7D13E5C53600D7488A /* iconProto.png */; };
-		FE27AF8013E5C56B00D7488A /* iconProto.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF7F13E5C56B00D7488A /* iconProto.png */; };
 		FE27AF8213E5C87800D7488A /* iconProto2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8113E5C87700D7488A /* iconProto2.png */; };
 		FE27AF8413E5C89A00D7488A /* iconProto2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8313E5C89900D7488A /* iconProto2.png */; };
 		FE27AF8813E623FD00D7488A /* residential_tiles-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8713E623FB00D7488A /* residential_tiles-2.png */; };
@@ -360,7 +358,6 @@
 		A2358F0613D6922E008A5431 /* steering_wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steering_wheel.png; sourceTree = "<group>"; };
 		A2358F0813D69544008A5431 /* neighborhoodDriving.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = neighborhoodDriving.tmx; sourceTree = "<group>"; };
 		A2358F1413D69E62008A5431 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		A2358F1613D6A2E0008A5431 /* Screen shot 2011-07-20 at 12.39.55 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen shot 2011-07-20 at 12.39.55 AM.png"; path = "../../Screen shot 2011-07-20 at 12.39.55 AM.png"; sourceTree = "<group>"; };
 		A2358F1813D6AAB6008A5431 /* splash1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash1.png; sourceTree = "<group>"; };
 		A247EBD013A329A400545558 /* SimSurance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimSurance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A247EBD413A329A400545558 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -786,7 +783,6 @@
 		FE27AF7313E5B2F900D7488A /* tile_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_map.png; sourceTree = "<group>"; };
 		FE27AF7913E5B34700D7488A /* house_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house_tiles.png; sourceTree = "<group>"; };
 		FE27AF7D13E5C53600D7488A /* iconProto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconProto.png; sourceTree = "<group>"; };
-		FE27AF7F13E5C56B00D7488A /* iconProto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconProto.png; sourceTree = "<group>"; };
 		FE27AF8113E5C87700D7488A /* iconProto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconProto2.png; sourceTree = "<group>"; };
 		FE27AF8313E5C89900D7488A /* iconProto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconProto2.png; sourceTree = "<group>"; };
 		FE27AF8713E623FB00D7488A /* residential_tiles-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "residential_tiles-2.png"; sourceTree = "<group>"; };
@@ -962,7 +958,6 @@
 			isa = PBXGroup;
 			children = (
 				FE27AF8313E5C89900D7488A /* iconProto2.png */,
-				FE27AF7F13E5C56B00D7488A /* iconProto.png */,
 				A247EBE413A329A400545558 /* SimSurance */,
 				A247EBD313A329A400545558 /* Frameworks */,
 				A247EBD113A329A400545558 /* Products */,
@@ -1524,7 +1519,6 @@
 				A2339EF113B652AE003B6E7C /* Icon@2x.png */,
 				A2339EF213B652AE003B6E7C /* Info.plist */,
 				A2339EF313B652AE003B6E7C /* iTunesArtwork */,
-				A2358F1613D6A2E0008A5431 /* Screen shot 2011-07-20 at 12.39.55 AM.png */,
 				A2358F1413D69E62008A5431 /* Default-Landscape~ipad.png */,
 			);
 			name = Icons;
@@ -1626,6 +1620,9 @@
 /* Begin PBXProject section */
 		A247EBC713A329A400545558 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = A247EBCA13A329A400545558 /* Build configuration list for PBXProject "SimSurance" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -1692,7 +1689,6 @@
 				A2358F0713D6922E008A5431 /* steering_wheel.png in Resources */,
 				A2358F0913D69544008A5431 /* neighborhoodDriving.tmx in Resources */,
 				A2358F1513D69E62008A5431 /* Default-Landscape~ipad.png in Resources */,
-				A2358F1713D6A2E0008A5431 /* Screen shot 2011-07-20 at 12.39.55 AM.png in Resources */,
 				A2358F1913D6AAB6008A5431 /* splash1.png in Resources */,
 				A255A5CA13DE6C7000392999 /* treesNBarrier-hd.png in Resources */,
 				A255A5CB13DE6C7000392999 /* vehicles-hd.png in Resources */,
@@ -1734,7 +1730,6 @@
 				FE27AF7713E5B2F900D7488A /* tile_map.png in Resources */,
 				FE27AF7B13E5B34700D7488A /* house_tiles.png in Resources */,
 				FE27AF7E13E5C53600D7488A /* iconProto.png in Resources */,
-				FE27AF8013E5C56B00D7488A /* iconProto.png in Resources */,
 				FE27AF8213E5C87800D7488A /* iconProto2.png in Resources */,
 				FE27AF8413E5C89A00D7488A /* iconProto2.png in Resources */,
 				FE27AF8813E623FD00D7488A /* residential_tiles-2.png in Resources */,

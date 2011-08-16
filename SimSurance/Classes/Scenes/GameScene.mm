@@ -172,7 +172,6 @@ static GameScene* instanceOfGameScene;
 // Setup our car, lots of physics here
 - (void)addMainPlayerToSceneAtPosition:(CGPoint)position {
   
-    self.mainPlayer = [CCSprite spriteWithFile:@"sport_red.png"];
     self.mainPlayer.position = position;
     self.engineSpeed = 0;
     self.steeringAngle = 0;
@@ -432,6 +431,8 @@ static GameScene* instanceOfGameScene;
                 [self addConeToScene];
                 [self addHummerToScene];
                 
+                self.mainPlayer = [CCSprite spriteWithFile:@"sport_red.png"];
+                
                 break;
             case GameLevelBasicTraining:
                 self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhood.tmx"];
@@ -445,6 +446,9 @@ static GameScene* instanceOfGameScene;
                 [self addWorldToScene];
                 [self addBoundingBoxToScene];    
                 [self addHouseBlocksToScene];
+                
+                self.mainPlayer = [CCSprite spriteWithFile:@"army_hummer.png"];
+
                 break;
             case GameLevelHospital:
                 self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhood.tmx"];
@@ -458,6 +462,9 @@ static GameScene* instanceOfGameScene;
                 [self addWorldToScene];
                 [self addBoundingBoxToScene];    
                 [self addHouseBlocksToScene];
+                
+                self.mainPlayer = [CCSprite spriteWithFile:@"suv_green.png"];
+
                 break;
             default:
                 break;
