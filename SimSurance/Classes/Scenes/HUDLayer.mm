@@ -103,6 +103,10 @@
     [messageLabel runAction:[CCSequence actionOne:blinkAction two:fadeAction]];
 }
 
+- (int)currentPointAmount {
+    return dollarAmount;
+}
+
 -(void) dealloc
 {
 	[super dealloc];

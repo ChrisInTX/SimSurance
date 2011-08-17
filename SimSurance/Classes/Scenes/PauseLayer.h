@@ -12,4 +12,5 @@
 @interface PauseLayer : CCLayerColor <CCTargetedTouchDelegate> {
     
 }
+- (void)updateMainLabelWithText:(NSString *)text;
 @end

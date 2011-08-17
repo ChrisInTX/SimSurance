@@ -13,6 +13,8 @@
 #import "SimSuranceConstants.h"
 #import "Box2D.h"
 #import "MyContactListener.h"
+#import "GameCenterManager.h"
+#import <GameKit/GameKit.h>
 
 // Tags for the various game layers, if needed to be retrieved from code
 typedef enum 
@@ -36,9 +38,13 @@ typedef enum
     GameLevelHospital,
 } GameLevelTags;
 
-@interface GameScene : CCLayer
+@interface GameScene : CCLayer <GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>
 {
     int level;
+    
+    //GameCenter Setup
+    GameCenterManager *gameCenterManager_;
+    NSString *currentLeaderboard_;
     
     // Box2D World
     b2World *world;
@@ -90,6 +96,9 @@ typedef enum
 @property float steeringAngle;
 @property (nonatomic, getter = isShowingPausedMenu) BOOL showingPausedMenu;
 @property int level;
+@property (nonatomic, retain) GameCenterManager *gameCenterManager;
+@property (nonatomic, retain) NSString *currentLeaderboard;
+
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
@@ -106,6 +115,11 @@ typedef enum
 -(CCSprite *) defaultPlayer;
 -(void)showPausedMenu;
 - (void)playerReachedEndOfLevel:(int)level;
+
+// Game Center
+- (IBAction) showLeaderboard;
+- (IBAction) showAchievements;
+- (void)checkAchievementsForLevel:(int)levelz;
 
 // Private
 -(void)setViewpointCenter:(CGPoint) position;

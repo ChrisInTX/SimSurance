@@ -22,4 +22,5 @@ typedef enum {
 }
 -(void) updatePointCounter:(int)amount;
 -(void) updatePointCounter:(int)amount withMessage:(NSString *)message;
+- (int)currentPointAmount;
 @end

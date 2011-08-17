@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83021C2713FB6B3500FF7260 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83021C2613FB6B3500FF7260 /* GameKit.framework */; };
+		83021C2C13FB761900FF7260 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83021C2B13FB761900FF7260 /* GameCenterManager.m */; };
+		83021C4A13FB83CD00FF7260 /* GKAchievementHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83021C4113FB83CD00FF7260 /* GKAchievementHandler.m */; };
+		83021C4B13FB83CD00FF7260 /* GKAchievementNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 83021C4313FB83CD00FF7260 /* GKAchievementNotification.m */; };
+		83021C4C13FB83CD00FF7260 /* gk-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4513FB83CD00FF7260 /* gk-icon.png */; };
+		83021C4D13FB83CD00FF7260 /* gk-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4613FB83CD00FF7260 /* gk-icon@2x.png */; };
+		83021C4E13FB83CD00FF7260 /* gk-notification.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4713FB83CD00FF7260 /* gk-notification.png */; };
+		83021C4F13FB83CD00FF7260 /* gk-notification@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4813FB83CD00FF7260 /* gk-notification@2x.png */; };
+		83021C5013FB83CD00FF7260 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4913FB83CD00FF7260 /* LICENSE */; };
 		A2339ED313B65262003B6E7C /* CCBodySprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2339EC013B65262003B6E7C /* CCBodySprite.mm */; };
 		A2339ED413B65262003B6E7C /* CCMotorSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2339EC313B65262003B6E7C /* CCMotorSprite.mm */; };
 		A2339ED513B65262003B6E7C /* CCSpringSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2339EC513B65262003B6E7C /* CCSpringSprite.mm */; };
@@ -300,13 +309,25 @@
 		FE27AF7B13E5B34700D7488A /* house_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF7913E5B34700D7488A /* house_tiles.png */; };
 		FE27AF7E13E5C53600D7488A /* iconProto.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF7D13E5C53600D7488A /* iconProto.png */; };
 		FE27AF8213E5C87800D7488A /* iconProto2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8113E5C87700D7488A /* iconProto2.png */; };
-		FE27AF8413E5C89A00D7488A /* iconProto2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8313E5C89900D7488A /* iconProto2.png */; };
 		FE27AF8813E623FD00D7488A /* residential_tiles-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8713E623FB00D7488A /* residential_tiles-2.png */; };
 		FE27AF8A13E659E800D7488A /* neighborhood.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8913E659E600D7488A /* neighborhood.tmx */; };
 		FE27AF9013E67A2C00D7488A /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = FE27AF8F13E67A2100D7488A /* title.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83021C2613FB6B3500FF7260 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		83021C2913FB761900FF7260 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
+		83021C2A13FB761900FF7260 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		83021C2B13FB761900FF7260 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		83021C4013FB83CD00FF7260 /* GKAchievementHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAchievementHandler.h; sourceTree = "<group>"; };
+		83021C4113FB83CD00FF7260 /* GKAchievementHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAchievementHandler.m; sourceTree = "<group>"; };
+		83021C4213FB83CD00FF7260 /* GKAchievementNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAchievementNotification.h; sourceTree = "<group>"; };
+		83021C4313FB83CD00FF7260 /* GKAchievementNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAchievementNotification.m; sourceTree = "<group>"; };
+		83021C4513FB83CD00FF7260 /* gk-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gk-icon.png"; sourceTree = "<group>"; };
+		83021C4613FB83CD00FF7260 /* gk-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gk-icon@2x.png"; sourceTree = "<group>"; };
+		83021C4713FB83CD00FF7260 /* gk-notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gk-notification.png"; sourceTree = "<group>"; };
+		83021C4813FB83CD00FF7260 /* gk-notification@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gk-notification@2x.png"; sourceTree = "<group>"; };
+		83021C4913FB83CD00FF7260 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A2339EBF13B65262003B6E7C /* CCBodySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBodySprite.h; sourceTree = "<group>"; };
 		A2339EC013B65262003B6E7C /* CCBodySprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCBodySprite.mm; sourceTree = "<group>"; };
 		A2339EC113B65262003B6E7C /* CCBox2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBox2D.h; sourceTree = "<group>"; };
@@ -795,6 +816,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83021C2713FB6B3500FF7260 /* GameKit.framework in Frameworks */,
 				A247EBD513A329A400545558 /* QuartzCore.framework in Frameworks */,
 				A247EBD713A329A400545558 /* OpenGLES.framework in Frameworks */,
 				A247EBD913A329A400545558 /* OpenAL.framework in Frameworks */,
@@ -809,6 +831,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83021C2813FB761900FF7260 /* GameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				83021C2913FB761900FF7260 /* AppSpecificValues.h */,
+				83021C2A13FB761900FF7260 /* GameCenterManager.h */,
+				83021C2B13FB761900FF7260 /* GameCenterManager.m */,
+			);
+			name = GameCenter;
+			path = Classes/Utils/GameCenter;
+			sourceTree = "<group>";
+		};
+		83021C3F13FB83CD00FF7260 /* GKAchievements */ = {
+			isa = PBXGroup;
+			children = (
+				83021C4013FB83CD00FF7260 /* GKAchievementHandler.h */,
+				83021C4113FB83CD00FF7260 /* GKAchievementHandler.m */,
+				83021C4213FB83CD00FF7260 /* GKAchievementNotification.h */,
+				83021C4313FB83CD00FF7260 /* GKAchievementNotification.m */,
+				83021C4413FB83CD00FF7260 /* images */,
+				83021C4913FB83CD00FF7260 /* LICENSE */,
+			);
+			name = GKAchievements;
+			path = Classes/Utils/GKAchievements;
+			sourceTree = "<group>";
+		};
+		83021C4413FB83CD00FF7260 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				83021C4513FB83CD00FF7260 /* gk-icon.png */,
+				83021C4613FB83CD00FF7260 /* gk-icon@2x.png */,
+				83021C4713FB83CD00FF7260 /* gk-notification.png */,
+				83021C4813FB83CD00FF7260 /* gk-notification@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		A2339EBD13B65262003B6E7C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,6 +1033,7 @@
 		A247EBD313A329A400545558 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83021C2613FB6B3500FF7260 /* GameKit.framework */,
 				A247EBD413A329A400545558 /* QuartzCore.framework */,
 				A247EBD613A329A400545558 /* OpenGLES.framework */,
 				A247EBD813A329A400545558 /* OpenAL.framework */,
@@ -1446,6 +1505,8 @@
 		A247EDC813A329F600545558 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				83021C3F13FB83CD00FF7260 /* GKAchievements */,
+				83021C2813FB761900FF7260 /* GameCenter */,
 				A247EDB613A329A600545558 /* AppDelegate.h */,
 				A247EDB713A329A600545558 /* AppDelegate.mm */,
 				A247EDB913A329A600545558 /* RootViewController.h */,
@@ -1731,7 +1792,6 @@
 				FE27AF7B13E5B34700D7488A /* house_tiles.png in Resources */,
 				FE27AF7E13E5C53600D7488A /* iconProto.png in Resources */,
 				FE27AF8213E5C87800D7488A /* iconProto2.png in Resources */,
-				FE27AF8413E5C89A00D7488A /* iconProto2.png in Resources */,
 				FE27AF8813E623FD00D7488A /* residential_tiles-2.png in Resources */,
 				FE27AF8A13E659E800D7488A /* neighborhood.tmx in Resources */,
 				FE27AF9013E67A2C00D7488A /* title.png in Resources */,
@@ -1777,6 +1837,11 @@
 				A722D97313EAD1A300B2EACB /* splashSubmenu.png in Resources */,
 				A722D97413EAD1A300B2EACB /* tutorialMenuItem-selected.png in Resources */,
 				A722D97513EAD1A300B2EACB /* tutorialMenuItem.png in Resources */,
+				83021C4C13FB83CD00FF7260 /* gk-icon.png in Resources */,
+				83021C4D13FB83CD00FF7260 /* gk-icon@2x.png in Resources */,
+				83021C4E13FB83CD00FF7260 /* gk-notification.png in Resources */,
+				83021C4F13FB83CD00FF7260 /* gk-notification@2x.png in Resources */,
+				83021C5013FB83CD00FF7260 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1944,6 +2009,9 @@
 				A255A5D513DE827D00392999 /* DriversEdStartScene.mm in Sources */,
 				A2E014DE13DE8761008B9415 /* AboutScene.m in Sources */,
 				A2F98BFB13E125530089F78B /* GameOverScene.mm in Sources */,
+				83021C2C13FB761900FF7260 /* GameCenterManager.m in Sources */,
+				83021C4A13FB83CD00FF7260 /* GKAchievementHandler.m in Sources */,
+				83021C4B13FB83CD00FF7260 /* GKAchievementNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,11 +22,14 @@
 		label.color = ccBLACK;
 		label.position = CGPointMake(screenSize.width/2,screenSize.height/2+200);
 		//label.anchorPoint = CGPointMake(0.5f, 1);
-		[self addChild:label z:0 tag:1];
+		[self addChild:label z:0 tag:1000];
         
         CCMenuItemImage *play = [CCMenuItemImage itemFromNormalImage:@"playMenuItem.png" selectedImage:@"playMenuItem-selected.png" target:self selector:@selector(playButtonSelected)];        
         CCMenuItemImage *back = [CCMenuItemImage itemFromNormalImage:@"mainMenu.png" selectedImage:@"mainMenu-selected.png" target:self selector:@selector(mainMenuButtonSelected)];
-        CCMenu *menu = [CCMenu menuWithItems:back, play, nil];
+        CCMenuItemImage *achivements = [CCMenuItemImage itemFromNormalImage:@"playMenuItem.png" selectedImage:@"playMenuItem-selected.png" target:self selector:@selector(achivementsButtonSelected)];        
+        CCMenuItemImage *leaderboard = [CCMenuItemImage itemFromNormalImage:@"playMenuItem.png" selectedImage:@"playMenuItem-selected.png" target:self selector:@selector(leaderboardButtonSelected)];        
+
+        CCMenu *menu = [CCMenu menuWithItems:back, play, achivements, leaderboard, nil];
         menu.position =  ccp( screenSize.width /2 , screenSize.height/2);
         [menu alignItemsVertically];
         [self addChild:menu];
@@ -35,6 +38,10 @@
 	return self;
 }
 
+- (void)updateMainLabelWithText:(NSString *)text {
+    CCLabelTTF *label = (CCLabelTTF *)[self getChildByTag:1000];
+    [label setString:text];
+}
 - (void)mainMenuButtonSelected  
 {
     CCLOG(@"Main Menu button selected, popping...");
@@ -50,6 +57,14 @@
     [[GameScene sharedGameScene] setShowingPausedMenu:NO];
     [[CCDirector sharedDirector] resume];
     [[GameScene sharedGameScene] removeChildByTag:GameScenePauseTag cleanup:YES];
+}
+
+- (void)achivementsButtonSelected {
+    [[GameScene sharedGameScene] showAchievements];
+}
+
+- (void)leaderboardButtonSelected {
+    [[GameScene sharedGameScene] showLeaderboard];
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

@@ -18,7 +18,7 @@
 
 @implementation AppDelegate
 
-@synthesize window;
+@synthesize window, viewController;
 
 - (void) removeStartupFlicker
 {
@@ -56,8 +56,8 @@
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// Init the View Controller
-	viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-	viewController.wantsFullScreenLayout = YES;
+	self.viewController = [[[RootViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+	self.viewController.wantsFullScreenLayout = YES;
 	
 	//
 	// Create the EAGLView manually
@@ -101,10 +101,10 @@
 	
 	
 	// make the OpenGLView a child of the view controller
-	[viewController setView:glView];
+	[self.viewController setView:glView];
 	
 	// make the View Controller a child of the main window
-	[window addSubview: viewController.view];
+	[window addSubview: self.viewController.view];
 	
 	[window makeKeyAndVisible];
 	
@@ -152,8 +152,8 @@
 	
 	[[director openGLView] removeFromSuperview];
 	
-	[viewController release];
-	
+	//[viewController release];
+	self.viewController = nil;
 	[window release];
 	
 	[director end];	

@@ -9,6 +9,10 @@
 #import "GameScene.h"
 #import "GameOverScene.h"
 #import "PauseLayer.h"
+#import "AppSpecificValues.h"
+#import "AppDelegate.h"
+#import "GKAchievementNotification.h"
+#import "GKAchievementHandler.h"
 
 @implementation GameScene
 @synthesize mainPlayer = mainPlayer_, 
@@ -19,6 +23,8 @@
         gameHUD = gameHUD_,
         showingPausedMenu = showingPausedMenu_,
         coneLayer = coneLayer_,
+        gameCenterManager = gameCenterManager_,
+        currentLeaderboard = currentLeaderboard_,
         world, steeringAngle, engineSpeed, level;
 
 +(CCScene *) sceneWithLevel:(int)levelz
@@ -412,6 +418,7 @@ static GameScene* instanceOfGameScene;
         instanceOfGameScene = self;
 		self.isTouchEnabled = YES;
 		pointCounter = 0;
+        inTransition = NO;
         
         // Load our various layers and set them to not visable (since they are 'meta' properties anyways)
         switch (self.level) {
@@ -470,14 +477,11 @@ static GameScene* instanceOfGameScene;
                 break;
         }
         
-
-
-        
         // Add a 'contact listener' for Collision Detection in Box2D
         contactListener = new MyContactListener();
         self.world->SetContactListener(contactListener);
         
-        [self schedule:@selector(tick:) interval:1.0/30.0f];
+        [self schedule:@selector(tick:) interval:1.0/60.0f];
         
         // Get the location of the user from the tile map object
         NSMutableDictionary* spawnPointRecord = [[self.tiledMap objectGroupNamed:@"player"] objectNamed:@"player"];
@@ -487,6 +491,14 @@ static GameScene* instanceOfGameScene;
         [self addMainPlayerToSceneAtPosition:startPos];
         [self setViewpointCenter:self.mainPlayer.position];
         self.showingPausedMenu = NO;   
+        
+        self.currentLeaderboard = kLeaderboardID;
+        
+        if ([GameCenterManager isGameCenterAvailable]) {
+            self.gameCenterManager = [[[GameCenterManager alloc] init] autorelease];
+            [self.gameCenterManager setDelegate:self];
+            [self.gameCenterManager authenticateLocalUser];
+        }
     }
     
     return self;
@@ -545,6 +557,9 @@ static GameScene* instanceOfGameScene;
                 NSString *collision = [properties valueForKey:@"collision"];
                 
                 if (collision && [collision isEqualToString:@"YES"]) {
+                    if (self.level == GameLevelDriversEd) {
+                        [self playerReachedEndOfLevel:0];
+                    }
                     //[self playerReachedEndOfLevel:0];
                     move = NO;  // added for neighborhood level
                     //was using collision for win condition.  tsk, tsk
@@ -574,9 +589,18 @@ static GameScene* instanceOfGameScene;
 }
 
 - (void)showEndOfLevelSceneForLevel:(int)levelz {
-    //[[CCDirector sharedDirector] replaceScene:[CCTransitionSplitCols transitionWithDuration:1.0 scene:[GameOverScene sceneWithLevel:levelz]]];
-    [self showPausedMenu]; // I couldnt get GameOverScene to play nice, so show the Pause Menu
-    inTransition = NO;
+    [self checkAchievementsForLevel:levelz];
+    [self showGameOverMenu]; // I couldnt get GameOverScene to play nice, so show the Pause Menu
+                           // inTransition = NO;
+    
+}
+
+- (void)showGameOverMenu {
+    PauseLayer *pauzy = [PauseLayer node];
+    [pauzy updateMainLabelWithText:@"Game Over!"];
+    [self setViewpointCenter:self.position];
+    [pauzy setPositionInPixels:self.position];
+    [self addChild:pauzy z:100 tag:GameScenePauseTag];
 }
 
 - (void)showPausedMenu {
@@ -610,6 +634,7 @@ static BOOL hit = YES;
 // Box2D tick and Cocos2D step
 -(void) tick: (ccTime) dt
 {
+    
 	int32 velocityIterations = 10;
 	int32 positionIterations = 10;
 
@@ -704,7 +729,9 @@ static BOOL hit = YES;
                 thisPos = spriteA.position;
                 if (!CGPointEqualToPoint(thisPos, lastPos)) {
                     [self.gameHUD updatePointCounter:-250 withMessage:@"Collision: -$250!"];
-                    [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
+                    if (self.level == GameLevelDriversEd) {
+                        [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
+                    }
                     hit = NO;
                     lastPos = spriteA.position;
                 }
@@ -713,7 +740,96 @@ static BOOL hit = YES;
     }
 }
 
+#pragma mark -
+#pragma mark Game Center Methods
+- (IBAction) showLeaderboard
+{
+    GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
+    if (leaderboardController != NULL)
+    {
+        AppDelegate * delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+        leaderboardController.category = self.currentLeaderboard;
+        leaderboardController.timeScope = GKLeaderboardTimeScopeAllTime;
+        leaderboardController.leaderboardDelegate = self;
+        [delegate.viewController presentModalViewController:leaderboardController animated:YES];
+    }
+}
 
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+    [viewController becomeFirstResponder];
+    [viewController dismissModalViewControllerAnimated: YES];
+}
+
+- (IBAction) showAchievements
+{
+    AppDelegate * delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
+    if (achievements != NULL)
+    {
+        achievements.achievementDelegate = self;
+        [delegate.viewController presentModalViewController: achievements animated: YES];
+    }
+}
+
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController;
+{
+    AppDelegate * delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    [delegate.viewController dismissModalViewControllerAnimated: YES];
+}
+
+- (void)checkAchievementsForLevel:(int)levelz {
+    NSString *award = nil;
+    NSString *awardTitle = nil;
+    NSString *awardText = nil;
+    double percentComplete = 0;
+    switch (levelz) {
+        case 0:
+        {
+            NSLog(@"** Player won Achivement Drivers License");
+            award = kAchievementDriversLicense;
+            awardTitle = @"Earned Driver's License";
+            awardText = @"You passed the Driver's Ed course!  You are now a certified driver!";
+            percentComplete = 100.0;
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"** Player won Achivement Sir, Yes Sir!");
+            award = kAchievementPassedMilitaryLevel;
+            awardTitle = @"Earned Driver's License";
+            awardText = @"Way to go, soldier!  You are now allowed to drive the simplest of machines, don't hurt your head!";
+            percentComplete = 100.0;
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"** Player won Achivement Life Saver");
+            award = kAchievementPassedHospitalLevel;
+            awardTitle = @"Life Saver";
+            awardText = @"Whew!  You made it!  Congrats on the new baby!";
+            percentComplete = 100.0;
+        }
+            break;
+        default:
+            break;
+    }
+    if (award) {
+        [self.gameCenterManager submitAchievement: award percentComplete: percentComplete];
+        [self.gameCenterManager submitAchievement: kAchievementPlayedAllLevels percentComplete: 33.0]; // This will always show 25% complete (for demo purposes)
+        int64_t score = self.gameHUD.currentPointAmount;
+        [self.gameCenterManager reportScore:score forCategory:self.currentLeaderboard];
+       
+        // grab an achievement description from where ever you saved them
+        //GKAchievementDescription *achievement = [[GKAchievementDescription alloc] init];
+        
+        if (awardText && awardTitle) {
+            // notify the user
+            [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"iconProto.png"]];
+            [[GKAchievementHandler defaultHandler] notifyAchievementTitle:awardTitle andMessage:awardText];
+        }
+    }
+}
 - (void)dealloc {
    
     delete world;
@@ -737,7 +853,8 @@ static BOOL hit = YES;
     self.stopLayer = nil;
     self.coneLayer = nil;
     self.gameHUD = nil;
-    
+    self.gameCenterManager = nil;
+    self.currentLeaderboard = nil;
     [super dealloc];
 }
 @end
