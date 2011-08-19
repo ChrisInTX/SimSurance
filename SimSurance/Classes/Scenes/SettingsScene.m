@@ -85,7 +85,7 @@
 - (void)goToMainMenu  
 {
     [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInT transitionWithDuration:1.0 scene:[MainMenuScene scene]]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInT transitionWithDuration:0.5 scene:[MainMenuScene scene]]];
 }
 
 - (void)muteMusic

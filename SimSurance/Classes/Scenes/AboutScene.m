@@ -74,7 +74,7 @@
 - (void)goToMainMenu  
 {
     CCLOG(@"Main Menu button selected, popping...");
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInB transitionWithDuration:1.0 scene:[MainMenuScene scene]]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInB transitionWithDuration:0.5 scene:[MainMenuScene scene]]];
 }
 
 // on "dealloc" you need to release all your retained objects

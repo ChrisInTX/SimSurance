@@ -17,6 +17,7 @@
 @implementation GameScene
 @synthesize mainPlayer = mainPlayer_, 
         tiledMap = tiledMap_, 
+        tiledUpperMap = tiledUpperMap_,
         backgroundLayer = backgroundLayer_, 
         stopLayer = stopLayer_, 
         wrongWayLayer = wrongWayLayer_, 
@@ -442,7 +443,7 @@ static GameScene* instanceOfGameScene;
                 
                 break;
             case GameLevelBasicTraining:
-                self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhood.tmx"];
+                self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"armyBase.tmx"];
                 self.backgroundLayer = [self.tiledMap layerNamed:@"base"];
                 self.stopLayer = [self.tiledMap layerNamed:@"collision"];
                 self.stopLayer.visible = NO;
@@ -458,13 +459,16 @@ static GameScene* instanceOfGameScene;
 
                 break;
             case GameLevelHospital:
-                self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhood.tmx"];
+                self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhoodBase.tmx"];
                 self.backgroundLayer = [self.tiledMap layerNamed:@"base"];
                 self.stopLayer = [self.tiledMap layerNamed:@"collision"];
                 self.stopLayer.visible = NO;
-
                 [self addChild:self.tiledMap z:-1];
-
+                
+                //upper layer, containing buildings, houses and trees (car can go under)
+                self.tiledUpperMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhoodTop.tmx"];          
+                [self addChild:self.tiledUpperMap z:2];
+                
                 // Setup our Box2D World 
                 [self addWorldToScene];
                 [self addBoundingBoxToScene];    
@@ -658,9 +662,9 @@ static BOOL hit = YES;
     
     //Steering tick
     float mspeed = self.steeringAngle - leftJoint->GetJointAngle();
-    leftJoint->SetMotorSpeed(mspeed * 1.5F);
+    leftJoint->SetMotorSpeed(mspeed * 1.1F);
     mspeed = self.steeringAngle - rightJoint->GetJointAngle();
-    rightJoint->SetMotorSpeed(mspeed * 1.5F);
+    rightJoint->SetMotorSpeed(mspeed * 1.1F);
 	
 	//Iterate over the bodies in the physics world
 	for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
@@ -816,7 +820,7 @@ static BOOL hit = YES;
     }
     if (award) {
         [self.gameCenterManager submitAchievement: award percentComplete: percentComplete];
-        [self.gameCenterManager submitAchievement: kAchievementPlayedAllLevels percentComplete: 33.0]; // This will always show 25% complete (for demo purposes)
+        [self.gameCenterManager submitAchievement: kAchievementPlayedAllLevels percentComplete: 33.0]; // This will always show 33% complete (for demo purposes)
         int64_t score = self.gameHUD.currentPointAmount;
         [self.gameCenterManager reportScore:score forCategory:self.currentLeaderboard];
        

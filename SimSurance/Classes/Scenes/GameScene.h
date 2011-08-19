@@ -52,6 +52,7 @@ typedef enum
     
     // TileMap & Various Layers
     CCTMXTiledMap *tiledMap_;
+    CCTMXTiledMap *tiledUpperMap_;  //  RWT
     CCTMXLayer *stopLayer_;
     CCTMXLayer *wrongWayLayer_;
     CCTMXLayer *backgroundLayer_;
@@ -87,6 +88,7 @@ typedef enum
 @property (nonatomic, retain) CCSprite *mainPlayer; // Eventually, make this a real player class
 @property (nonatomic, retain) HUDLayer *gameHUD; // Specific layer for HUD
 @property (nonatomic, retain) CCTMXTiledMap *tiledMap; // General Tilemap
+@property (nonatomic, retain) CCTMXTiledMap *tiledUpperMap; // General Tilemap  //  RWT
 @property (nonatomic, retain) CCTMXLayer *backgroundLayer; // Specific Tile layer
 @property (nonatomic, retain) CCTMXLayer *stopLayer;
 @property (nonatomic, retain) CCTMXLayer *wrongWayLayer;
@@ -125,5 +127,6 @@ typedef enum
 -(void)setViewpointCenter:(CGPoint) position;
 -(CGPoint)tileCoordForPosition:(CGPoint)position;
 -(void)showEndOfLevelSceneForLevel:(int)level;
+-(void)showGameOverMenu;
 
 @end

@@ -13,6 +13,7 @@
 #import "SettingsScene.h"
 #import "CCBReader.h"
 #import "SimpleAudioEngine.h"
+#import "StageSelectScene.h"
 
 @implementation MainMenuScene
 
@@ -140,21 +141,21 @@
 
 -(void)playButtonBottomSelected:(id)sender  
 {
-    NSLog(@"** Play!!!");
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitCols transitionWithDuration:1.0 scene:[GameScene sceneWithLevel:GameLevelHospital]]];
+    NSLog(@"** Stage Select!!!");
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInR transitionWithDuration:0.5 scene:[StageSelectScene scene]]];
 }
 
 -(void)aboutButtonSelected:(id)sender  
 {
     NSLog(@"** About!!!");
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInL transitionWithDuration:1.0 scene:[AboutScene scene]]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInT transitionWithDuration:0.5 scene:[AboutScene scene]]];
 
 }
 
 -(void)settingsButtonSelected:(id)sender  
 {
     NSLog(@"** Settings!!!");
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInB transitionWithDuration:1.0 scene:[SettingsScene scene]]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInB transitionWithDuration:0.5 scene:[SettingsScene scene]]];
 
 }
 

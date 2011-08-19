@@ -97,10 +97,11 @@
     [self updatePointCounter:amount];
     
     id blinkAction = [CCBlink actionWithDuration:2.0 blinks:3];
-    id fadeAction = [CCFadeOut actionWithDuration:3.0];
+    // id fadeAction = [CCFadeOut actionWithDuration:3.0];
     [messageLabel stopAllActions];
     [messageLabel setString:message];
-    [messageLabel runAction:[CCSequence actionOne:blinkAction two:fadeAction]];
+    [messageLabel runAction:blinkAction];
+    //[CCSequence actionOne:blinkAction two:fadeAction]];
 }
 
 - (int)currentPointAmount {
