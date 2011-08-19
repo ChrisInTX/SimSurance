@@ -27,6 +27,7 @@ coneLayer = coneLayer_,
 gameCenterManager = gameCenterManager_,
 currentLeaderboard = currentLeaderboard_,
 fenceLayer = fenceLayer_,
+victor = victor_,
 world, steeringAngle, engineSpeed, level;
 
 +(CCScene *) sceneWithLevel:(int)levelz
@@ -455,7 +456,8 @@ static GameScene* instanceOfGameScene;
                 self.stopLayer = [self.tiledMap layerNamed:@"collision"];
                 self.stopLayer.visible = NO;
                 self.fenceLayer = [self.tiledMap layerNamed:@"fences"];
-                
+                self.victor = [self.tiledMap layerNamed:@"victory"];
+                self.victor.visible = NO;
                 [self addChild:self.tiledMap z:-1];
                 
                 // Setup our Box2D World 
@@ -571,6 +573,10 @@ static GameScene* instanceOfGameScene;
     else {
         CGPoint tileCoord = [self tileCoordForPosition:position];
         int tileGid1 = [self.stopLayer tileGIDAt:tileCoord];
+        
+        // Special hack for base level since its late :)
+        int tileGid2 = [self.victor tileGIDAt:tileCoord];
+        
         move = YES;
         // For Drivers Ed map, check to see if we are in the "red zone" (check map)
         if (tileGid1) { // Then check if we can go to that tile
@@ -596,7 +602,25 @@ static GameScene* instanceOfGameScene;
                             break;
                     }
                 }
-
+                
+            }
+        } else if (tileGid2) { 
+            NSDictionary *properties = [self.tiledMap propertiesForGID:tileGid2];
+            if (properties) {
+                NSString *victory = [properties valueForKey:@"victory"];
+                
+                if (victory && [victory isEqualToString:@"YES"]) {
+                    switch (self.level) {
+                        case GameLevelBasicTraining:
+                            [self playerReachedEndOfLevel:GameLevelBasicTraining];
+                            break;
+                        case GameLevelHospital:
+                            [self playerReachedEndOfLevel:GameLevelHospital];
+                            break;    
+                        default:
+                            break;
+                    }
+                }
             }
         }
     }
@@ -606,6 +630,7 @@ static GameScene* instanceOfGameScene;
 - (void)playerReachedEndOfLevel:(int)levelz {
     if (!inTransition) {
         inTransition = YES;
+        [self unscheduleAllSelectors];
         switch (levelz) {
             case GameLevelDriversEd:
                 NSLog(@"** Rearched End of Level 0");

@@ -24,6 +24,20 @@
         [self addGasPedal];
         [self addBrakePedal];
         [self schedule:@selector(joystickTick:) interval:1.0f/30.0f];
+        
+        switch ([[GameScene sharedGameScene] level]) {
+            case GameLevelDriversEd:
+                maxSpeed = 7;
+                break;
+            case GameLevelBasicTraining:
+                maxSpeed = 3;
+                break;
+            case GameLevelHospital:
+                maxSpeed = 5;
+                break;
+            default:
+                break;
+        }
 	}
 	
 	return self;
@@ -105,7 +119,7 @@
     lastVelocity = scaledVelocity;
     
 	if(gasPedal.value) {
-        if ([GameScene sharedGameScene].engineSpeed <= 6.5) { // Speeding up
+        if ([GameScene sharedGameScene].engineSpeed <= maxSpeed) { // Speeding up
             [GameScene sharedGameScene].engineSpeed = [GameScene sharedGameScene].engineSpeed + 1.0f; // Increment by 1
             NSLog(@"** Speeding up by 1");
         }

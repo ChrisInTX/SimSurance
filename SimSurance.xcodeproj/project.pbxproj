@@ -20,6 +20,7 @@
 		83343EE613FE24B40035D27C /* achievementMenuItem-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83343EE213FE24B40035D27C /* achievementMenuItem-selected.png */; };
 		83343EE713FE24B40035D27C /* achievementMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 83343EE313FE24B40035D27C /* achievementMenuItem.png */; };
 		83343EE913FE34120035D27C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 83343EE813FE34110035D27C /* Default-Landscape~ipad.png */; };
+		83343EEB13FE377A0035D27C /* meta_tiles_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 83343EEA13FE37780035D27C /* meta_tiles_4.png */; };
 		8342D25513FE1B030016B141 /* About04Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1C113FE1B030016B141 /* About04Font.ttf */; };
 		8342D25613FE1B030016B141 /* aboutMenuItem-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1C213FE1B030016B141 /* aboutMenuItem-selected.png */; };
 		8342D25713FE1B030016B141 /* aboutMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1C313FE1B030016B141 /* aboutMenuItem.png */; };
@@ -338,6 +339,7 @@
 		83343EE213FE24B40035D27C /* achievementMenuItem-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievementMenuItem-selected.png"; sourceTree = "<group>"; };
 		83343EE313FE24B40035D27C /* achievementMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achievementMenuItem.png; sourceTree = "<group>"; };
 		83343EE813FE34110035D27C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		83343EEA13FE37780035D27C /* meta_tiles_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta_tiles_4.png; sourceTree = "<group>"; };
 		8342D1C113FE1B030016B141 /* About04Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = About04Font.ttf; sourceTree = "<group>"; };
 		8342D1C213FE1B030016B141 /* aboutMenuItem-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutMenuItem-selected.png"; sourceTree = "<group>"; };
 		8342D1C313FE1B030016B141 /* aboutMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutMenuItem.png; sourceTree = "<group>"; };
@@ -1063,6 +1065,7 @@
 				8342D1CE13FE1B030016B141 /* brake.png */,
 				8342D1D313FE1B030016B141 /* clipboard2.png */,
 				8342D1D913FE1B030016B141 /* dashboard.png */,
+				83343EEA13FE37780035D27C /* meta_tiles_4.png */,
 				8342D1E013FE1B030016B141 /* fps_images.png */,
 				8342D1E113FE1B030016B141 /* gas_down.png */,
 				8342D1E213FE1B030016B141 /* gas.png */,
@@ -1841,6 +1844,7 @@
 				83343EE613FE24B40035D27C /* achievementMenuItem-selected.png in Resources */,
 				83343EE713FE24B40035D27C /* achievementMenuItem.png in Resources */,
 				83343EE913FE34120035D27C /* Default-Landscape~ipad.png in Resources */,
+				83343EEB13FE377A0035D27C /* meta_tiles_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

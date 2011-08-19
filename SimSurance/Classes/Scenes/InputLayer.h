@@ -23,6 +23,7 @@
     SneakyButton *gasPedal;
     SneakyButton *brakePedal;
     CGPoint lastVelocity;
+    int maxSpeed;
 }
 - (void)addGasPedal;
 - (void)addBrakePedal;
