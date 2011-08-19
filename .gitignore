@@ -13,8 +13,6 @@ dsa_priv.pem
 *.perspective
 *.perspectivev3
 *.pbxuser
-*.xcuserdatad
-*.xcuserstate
 
 
 # Generated files
