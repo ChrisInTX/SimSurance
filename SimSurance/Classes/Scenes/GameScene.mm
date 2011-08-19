@@ -26,6 +26,7 @@ showingPausedMenu = showingPausedMenu_,
 coneLayer = coneLayer_,
 gameCenterManager = gameCenterManager_,
 currentLeaderboard = currentLeaderboard_,
+fenceLayer = fenceLayer_,
 world, steeringAngle, engineSpeed, level;
 
 +(CCScene *) sceneWithLevel:(int)levelz
@@ -373,11 +374,17 @@ static GameScene* instanceOfGameScene;
                     NSString *collision = [properties valueForKey:@"collision"];
                     
                     if (collision && [collision isEqualToString:@"YES"]) {
-                        CCSprite *block = [CCSprite spriteWithFile:@"transparent.png"];
+                        CCSprite *block = nil;
+                        if (self.level == GameLevelBasicTraining) {
+                            block = [self.fenceLayer tileAt:CGPointMake(x, y)];
+                            // We dont want to addChild again since we are pulling from tilemap, its already added
+                        } else {
+                            block = [CCSprite spriteWithFile:@"transparent.png"];
+                            [self addChild:block z:1 tag:GameSceneBlockTag];
+                        }
                         CGPoint x2 = [self.stopLayer positionAt:CGPointMake(x, y)];
                         
                         block.position = x2;
-                        [self addChild:block z:1 tag:GameSceneBlockTag];
                         
                         // Create Box2D Paddle Body
                         b2BodyDef blockBodyDef;
@@ -447,6 +454,7 @@ static GameScene* instanceOfGameScene;
                 self.backgroundLayer = [self.tiledMap layerNamed:@"base"];
                 self.stopLayer = [self.tiledMap layerNamed:@"collision"];
                 self.stopLayer.visible = NO;
+                self.fenceLayer = [self.tiledMap layerNamed:@"fences"];
                 
                 [self addChild:self.tiledMap z:-1];
                 
@@ -559,15 +567,26 @@ static GameScene* instanceOfGameScene;
             NSDictionary *properties = [self.tiledMap propertiesForGID:tileGid1];
             if (properties) {
                 NSString *collision = [properties valueForKey:@"collision"];
-                
+                NSString *victory = [properties valueForKey:@"victory"];
+
                 if (collision && [collision isEqualToString:@"YES"]) {
                     if (self.level == GameLevelDriversEd) {
-                        [self playerReachedEndOfLevel:0];
+                        [self playerReachedEndOfLevel:GameLevelDriversEd];
                     }
-                    //[self playerReachedEndOfLevel:0];
                     move = NO;  // added for neighborhood level
-                                //was using collision for win condition.  tsk, tsk
+                } else if (victory && [victory isEqualToString:@"YES"]) {
+                    switch (self.level) {
+                        case GameLevelBasicTraining:
+                            [self playerReachedEndOfLevel:GameLevelBasicTraining];
+                            break;
+                        case GameLevelHospital:
+                            [self playerReachedEndOfLevel:GameLevelHospital];
+                            break;    
+                        default:
+                            break;
+                    }
                 }
+
             }
         }
     }
@@ -578,11 +597,15 @@ static GameScene* instanceOfGameScene;
     if (!inTransition) {
         inTransition = YES;
         switch (levelz) {
-            case 0:
+            case GameLevelDriversEd:
                 NSLog(@"** Rearched End of Level 0");
                 [self showEndOfLevelSceneForLevel:level];
                 break;
-            case 1:
+            case GameLevelBasicTraining:
+                NSLog(@"** Rearched End of Level 1");
+                [self showEndOfLevelSceneForLevel:level];
+                break;
+            case GameLevelHospital:
                 NSLog(@"** Rearched End of Level 1");
                 [self showEndOfLevelSceneForLevel:level];
                 break;
@@ -862,6 +885,7 @@ static BOOL hit = YES;
     self.gameHUD = nil;
     self.gameCenterManager = nil;
     self.currentLeaderboard = nil;
+    self.fenceLayer = nil;
     [super dealloc];
 }
 @end

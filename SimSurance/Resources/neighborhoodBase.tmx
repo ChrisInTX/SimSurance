@@ -16,6 +16,11 @@
     <property name="collision" value="YES"/>
    </properties>
   </tile>
+  <tile id="1">
+   <properties>
+    <property name="victory" value="YES"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="base" width="50" height="100">
   <data encoding="base64" compression="zlib">
@@ -24,10 +29,10 @@
  </layer>
  <layer name="collision" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJztmNuOwzAIRLvq///zqupbZcxtIBOHkfyQBAPH2KTN67XW3/s7pPvWgfSlxfFweHOIcnjktfeyWOdn88py/PqKxGfjiGg4cvZoITkyfSKrSo5OFlQ81n0V8VMdv6PGT+eo1t36rqRqjsjvzEgfRHOs4g+H7tuaV9Z+lZ/Vjomj83x4xwk6hWU4uDQcXKrkQP2ns/RY7V3U2aOHg4tDionm6NBwcPXdEziqznm3hsPfd684+1ax5RPVcHDpBA7G8+oVa9+JaDi4ZOVgfv99FOVgY3k6B5uexsHmuzOWxTcqNus+8Wo4uDQcXDqdw/MNxvotpvI9iuCw+K/+dqT5OoEDUZMTOBD7MsvRdT5QQvWrCAOaY/dMy4GlJtkziuBY+dGuuzlWtUOMXZxKDvSo4OhmeCrH6rmHo5IlyhGti2RnWZ9fW0ucCg6tVlHbXZ5313Dw6WQOqVfsesrKR1fflXLw5JKZOxw2effV1Rwam9Wn5HuXg/U6w4GocWY/aHlItl4/Vg7Nv1XDsZ7v2Sed+yrbc6w5RNXFYZ2bVQeH5ruiLhUc3rlSbOtaXNGvTuZA+JKeI3Jh5cjmgOBA7Sstn+i8KzjuIMu63kGncHyE5LhyXXZnSTpbu3sVwxLjH3dcFVE=
+   eJztmNtuhDAMRLfL//9zhapVqyqJx1eG4JHyACS2T2KbXV6vsb6OnzG7j45IW5IfDYc2BiuHRtr5WhZ0vTcuL8f7+B2fmP7eQ/wzcJx6H+OB+mfh8Kg5xnasfcKrTI5Klih/rHllsZPtv+KMn86Rrbv13ZmyOSy/My19MJpj5L85ZNtoXN75o/jQeUwclfWhHTtoF5bm4FJzcCmTI+o/HdJjpXdRZY9uDi6Omc9ojgo1B1ff3YEjq86r1Rz6vntF7aNii8eq5uDSDhyM9aoVa9+xqDm4hHIwv/9OWTnYWJ7OwaancbDZrvSF2I7yzZonWjUHl5qDS7tzaL7BoN9iMt+jERyI/exvR5KtHTgizmQHjoi89HJU1UeUovqVhSGaY/VMioHlTLw1GsExsiNdV3OMzi5irPxkckSPDI5qhqdyjJ5rODJZrBzWc5nNQ/bn/1zETwaHdFbWuas4767m4NPOHLNeseopIxtVfXcWgyYWz9rmwKTNq6s5JDbU5sz2Kgb02sMRccaefJDimM3V2kE5JPuommO8XpMnlXnl7TloDFZVcaBrvargkGxnnEsGh3btzDe6F1f0q505ImzNnkfEwsrhjSGCIyqvpHis667guIOQfb2DduE4Fclx5b6samlWW6t7GQPx8Q0SXhWN
   </data>
  </layer>
  <objectgroup name="player" width="50" height="100">
-  <object name="player" x="192" y="5952" width="64" height="64"/>
+  <object name="player" x="238" y="5788" width="64" height="64"/>
  </objectgroup>
 </map>

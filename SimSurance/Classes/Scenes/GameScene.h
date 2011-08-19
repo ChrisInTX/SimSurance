@@ -57,6 +57,7 @@ typedef enum
     CCTMXLayer *wrongWayLayer_;
     CCTMXLayer *backgroundLayer_;
     CCTMXLayer *coneLayer_;
+    CCTMXLayer *fenceLayer_;
     MyContactListener *contactListener;
     HUDLayer *gameHUD_;
     BOOL showingPausedMenu_;
@@ -93,6 +94,7 @@ typedef enum
 @property (nonatomic, retain) CCTMXLayer *stopLayer;
 @property (nonatomic, retain) CCTMXLayer *wrongWayLayer;
 @property (nonatomic, retain) CCTMXLayer *coneLayer;
+@property (nonatomic, retain) CCTMXLayer *fenceLayer; // Specific Tile Layer for Basic Training
 @property b2World *world;
 @property float engineSpeed;
 @property float steeringAngle;
