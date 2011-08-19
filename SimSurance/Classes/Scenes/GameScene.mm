@@ -16,17 +16,17 @@
 
 @implementation GameScene
 @synthesize mainPlayer = mainPlayer_, 
-        tiledMap = tiledMap_, 
-        tiledUpperMap = tiledUpperMap_,
-        backgroundLayer = backgroundLayer_, 
-        stopLayer = stopLayer_, 
-        wrongWayLayer = wrongWayLayer_, 
-        gameHUD = gameHUD_,
-        showingPausedMenu = showingPausedMenu_,
-        coneLayer = coneLayer_,
-        gameCenterManager = gameCenterManager_,
-        currentLeaderboard = currentLeaderboard_,
-        world, steeringAngle, engineSpeed, level;
+tiledMap = tiledMap_, 
+tiledUpperMap = tiledUpperMap_,
+backgroundLayer = backgroundLayer_, 
+stopLayer = stopLayer_, 
+wrongWayLayer = wrongWayLayer_, 
+gameHUD = gameHUD_,
+showingPausedMenu = showingPausedMenu_,
+coneLayer = coneLayer_,
+gameCenterManager = gameCenterManager_,
+currentLeaderboard = currentLeaderboard_,
+world, steeringAngle, engineSpeed, level;
 
 +(CCScene *) sceneWithLevel:(int)levelz
 {
@@ -106,7 +106,7 @@ static GameScene* instanceOfGameScene;
     
     // Construct a world object, which will hold and simulate the rigid bodies.
     self.world = new b2World(gravity, doSleep);
-   // self.world->SetContinuousPhysics(true);
+    // self.world->SetContinuousPhysics(true);
     
 }
 
@@ -123,7 +123,7 @@ static GameScene* instanceOfGameScene;
     groundBody = self.world->CreateBody(&groundBodyDef);
     b2PolygonShape groundBox;
     b2FixtureDef groundBoxDef;
-
+    
     // bottom
     groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(screenSize.width/PTM_RATIO,0));
     groundBody->CreateFixture(&groundBox,0);
@@ -139,15 +139,15 @@ static GameScene* instanceOfGameScene;
     // right
     groundBox.SetAsEdge(b2Vec2(screenSize.width/PTM_RATIO,screenSize.height/PTM_RATIO), b2Vec2(screenSize.width/PTM_RATIO,0));
     groundBody->CreateFixture(&groundBox,0);
-
+    
     
 }
 
 // This is generic code usable for any object you want to add physics too (note this is static body, however)
 -(void)addHummerToScene {
-   // CCSprite *hummer = [CCSprite spriteWithFile:@"army_hummer.png"];
+    // CCSprite *hummer = [CCSprite spriteWithFile:@"army_hummer.png"];
     CCSprite *hummer = [CCSprite spriteWithFile:@"army_truck.png"];
-
+    
     NSMutableDictionary* spawnPointRecord = [[self.tiledMap objectGroupNamed:@"hummer"] objectNamed:@"npc"];
     CGPoint startPos = ccp([[spawnPointRecord valueForKey:@"x"] intValue],
                            [[spawnPointRecord valueForKey:@"y"] intValue]);
@@ -164,7 +164,7 @@ static GameScene* instanceOfGameScene;
     // Create Box2D Hummer Shape
     b2PolygonShape hummerShape;
     hummerShape.SetAsBox(hummer.contentSize.width/PTM_RATIO/2, 
-                       hummer.contentSize.height/PTM_RATIO/2);
+                         hummer.contentSize.height/PTM_RATIO/2);
     
     // Create Shape Definition and Add to Body
     b2FixtureDef hummerShapeDef;
@@ -173,17 +173,17 @@ static GameScene* instanceOfGameScene;
     hummerShapeDef.friction = 0.8f;
     hummerShapeDef.restitution = 0.3f;
     hummerBody->CreateFixture(&hummerShapeDef);
-
+    
 }
 
 // Setup our car, lots of physics here
 - (void)addMainPlayerToSceneAtPosition:(CGPoint)position {
-  
+    
     self.mainPlayer.position = position;
     self.engineSpeed = 0;
     self.steeringAngle = 0;
     [self addChild:self.mainPlayer z:1 tag:GameScenePlayerTag];
-
+    
     // define our body
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -298,7 +298,7 @@ static GameScene* instanceOfGameScene;
     leftRearJointDef.lowerTranslation = 0.0f;
     leftRearJointDef.upperTranslation = 0.0f;
     (b2PrismaticJoint*) self.world->CreateJoint(&leftRearJointDef);  // This stupid joint is missing from CCBox2D (need to add it, contribute to project)
-   
+    
     // Right
     b2PrismaticJointDef rightRearJointDef;
     rightRearJointDef.Initialize(body, rightRearWheel, rightRearWheel->GetWorldCenter(),wheelAngle);
@@ -306,7 +306,7 @@ static GameScene* instanceOfGameScene;
     rightRearJointDef.lowerTranslation = 0.0f;
     rightRearJointDef.upperTranslation = 0.0f;
     (b2PrismaticJoint*)self.world->CreateJoint(&rightRearJointDef);
-
+    
 }
 
 -(void)addConeToScene {
@@ -325,7 +325,7 @@ static GameScene* instanceOfGameScene;
                     if (collision && [collision isEqualToString:@"YES"]) {
                         CCSprite *cone = [CCSprite spriteWithFile:@"cone_straight.png"];
                         CGPoint x2 = [self.coneLayer positionAt:CGPointMake(x, y)];
-
+                        
                         cone.position = x2;
                         [self addChild:cone z:1 tag:GameSceneHazardTag];
                         
@@ -350,13 +350,13 @@ static GameScene* instanceOfGameScene;
                         coneFixture = coneBody->CreateFixture(&coneShapeDef);
                     }
                 }
-
                 
-            
+                
+                
             }
         }
     }
-        
+    
 }
 
 -(void)addHouseBlocksToScene {
@@ -389,7 +389,7 @@ static GameScene* instanceOfGameScene;
                         // Create Box2D Paddle Shape
                         b2PolygonShape houseShape;
                         houseShape.SetAsBox(block.contentSize.width/PTM_RATIO/2, 
-                                           block.contentSize.height/PTM_RATIO/2);
+                                            block.contentSize.height/PTM_RATIO/2);
                         
                         // Create Shape Definition and Add to Body
                         b2FixtureDef houseShapeDef;
@@ -413,7 +413,7 @@ static GameScene* instanceOfGameScene;
 // on "init" you need to initialize your instance
 -(id) init
 {
-
+    
 	if( (self=[super init])) {
         
         instanceOfGameScene = self;
@@ -432,7 +432,7 @@ static GameScene* instanceOfGameScene;
                 self.coneLayer.visible = NO;
                 
                 [self addChild:self.tiledMap z:-1];
-
+                
                 // Setup our Box2D World 
                 [self addWorldToScene];
                 [self addBoundingBoxToScene];    
@@ -447,16 +447,16 @@ static GameScene* instanceOfGameScene;
                 self.backgroundLayer = [self.tiledMap layerNamed:@"base"];
                 self.stopLayer = [self.tiledMap layerNamed:@"collision"];
                 self.stopLayer.visible = NO;
-
+                
                 [self addChild:self.tiledMap z:-1];
-
+                
                 // Setup our Box2D World 
                 [self addWorldToScene];
                 [self addBoundingBoxToScene];    
                 [self addHouseBlocksToScene];
                 
-                self.mainPlayer = [CCSprite spriteWithFile:@"army_hummer.png"];
-
+                self.mainPlayer = [CCSprite spriteWithFile:@"army_truck.png"];
+                
                 break;
             case GameLevelHospital:
                 self.tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:@"neighborhoodBase.tmx"];
@@ -475,7 +475,7 @@ static GameScene* instanceOfGameScene;
                 [self addHouseBlocksToScene];
                 
                 self.mainPlayer = [CCSprite spriteWithFile:@"suv_green.png"];
-
+                
                 break;
             default:
                 break;
@@ -491,7 +491,7 @@ static GameScene* instanceOfGameScene;
         NSMutableDictionary* spawnPointRecord = [[self.tiledMap objectGroupNamed:@"player"] objectNamed:@"player"];
         CGPoint startPos = ccp([[spawnPointRecord valueForKey:@"x"] intValue],
                                [[spawnPointRecord valueForKey:@"y"] intValue]);
-    
+        
         [self addMainPlayerToSceneAtPosition:startPos];
         [self setViewpointCenter:self.mainPlayer.position];
         self.showingPausedMenu = NO;   
@@ -542,8 +542,8 @@ static GameScene* instanceOfGameScene;
     CGSize winSize = CGSizeMake(newX, newY);
     BOOL move = NO;
     // First, make sure we're not going off the screen
-   if (position.x < 0)
-       move = NO;
+    if (position.x < 0)
+        move = NO;
     else if (position.x > winSize.width)
         move = NO;
     else if (position.y < 0)
@@ -566,11 +566,11 @@ static GameScene* instanceOfGameScene;
                     }
                     //[self playerReachedEndOfLevel:0];
                     move = NO;  // added for neighborhood level
-                    //was using collision for win condition.  tsk, tsk
+                                //was using collision for win condition.  tsk, tsk
                 }
             }
         }
-}
+    }
     return  move;
 }
 
@@ -595,7 +595,7 @@ static GameScene* instanceOfGameScene;
 - (void)showEndOfLevelSceneForLevel:(int)levelz {
     [self checkAchievementsForLevel:levelz];
     [self showGameOverMenu]; // I couldnt get GameOverScene to play nice, so show the Pause Menu
-                           // inTransition = NO;
+                             // inTransition = NO;
     
 }
 
@@ -641,9 +641,9 @@ static BOOL hit = YES;
     
 	int32 velocityIterations = 10;
 	int32 positionIterations = 10;
-
+    
 	self.world->Step(dt, velocityIterations, positionIterations);
-   
+    
     // Car Tick
     [self killOrthogonalVelocityForTarget:leftWheel];
     [self killOrthogonalVelocityForTarget:rightWheel];
@@ -672,7 +672,7 @@ static BOOL hit = YES;
         if (b->GetUserData() != NULL) {            
             // Make sure we are getting the player
             if ([(CCSprite*)b->GetUserData() isEqual:self.mainPlayer]) {
-              CGPoint newPosition = CGPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
+                CGPoint newPosition = CGPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
                 // Check to see if the new position is good or not
                 if ([self shouldMovePlayerToPosition:newPosition]) {
                     self.mainPlayer = (CCSprite*)b->GetUserData();
@@ -680,7 +680,7 @@ static BOOL hit = YES;
                     self.mainPlayer.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
                     [self setViewpointCenter:self.mainPlayer.position];
                 }
-               
+                
             }
         }
     }
@@ -716,23 +716,26 @@ static BOOL hit = YES;
                     pointCounter++;
                     // Yell at the player after hitting 5+ cones
                     if (pointCounter > 5) {
-                        [self.gameHUD updatePointCounter:-5 withMessage:@"Don't hit the cones!"];
+                        [self.gameHUD updatePointCounter:-10 withMessage:@"Don't hit the cones!"];
                         [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
                         pointCounter = 0;
+                        [self.gameCenterManager submitAchievement: kAchievementPassedRecklessDriver percentComplete: 100.0];
+                        [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"gk-icon.png"]];
+                        [[GKAchievementHandler defaultHandler] notifyAchievementTitle:@"Reckless Driver" andMessage:@"Congrats!  You have successfully ruined my car!"];
                     }
                 }
                 // Hitting the truck is a big no-no!!
             } else if (spriteA.tag == GameSceneHummerTag && spriteB.tag == GameScenePlayerTag) {
-                [self.gameHUD updatePointCounter:-15 withMessage:@"Don't hit my truck!"];
+                [self.gameHUD updatePointCounter:-15 withMessage:@"OHHH, NOT MY TRUCK!"];
                 [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
                 // Hitting the houses on the non-Drivers Ed maps
             } else if (spriteA.tag == GameSceneBlockTag && spriteB.tag == GameScenePlayerTag) {
-               // This logic will only count a collision once
+                // This logic will only count a collision once
                 static CGPoint thisPos = spriteA.position;
                 static CGPoint lastPos = CGPointMake(0, 0);
                 thisPos = spriteA.position;
                 if (!CGPointEqualToPoint(thisPos, lastPos)) {
-                    [self.gameHUD updatePointCounter:-250 withMessage:@"Collision: -$250!"];
+                    [self.gameHUD updatePointCounter:-250 withMessage:@"Collision Claim -$250!"];
                     if (self.level == GameLevelDriversEd) {
                         [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
                     }
@@ -823,19 +826,19 @@ static BOOL hit = YES;
         [self.gameCenterManager submitAchievement: kAchievementPlayedAllLevels percentComplete: 33.0]; // This will always show 33% complete (for demo purposes)
         int64_t score = self.gameHUD.currentPointAmount;
         [self.gameCenterManager reportScore:score forCategory:self.currentLeaderboard];
-       
+        
         // grab an achievement description from where ever you saved them
         //GKAchievementDescription *achievement = [[GKAchievementDescription alloc] init];
         
         if (awardText && awardTitle) {
             // notify the user
-            [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"iconProto.png"]];
+            [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"gk-icon.png"]];
             [[GKAchievementHandler defaultHandler] notifyAchievementTitle:awardTitle andMessage:awardText];
         }
     }
 }
 - (void)dealloc {
-   
+    
     delete world;
     delete contactListener;
 	world = NULL;

@@ -26,10 +26,10 @@
         
         CCMenuItemImage *play = [CCMenuItemImage itemFromNormalImage:@"playMenuItem.png" selectedImage:@"playMenuItem-selected.png" target:self selector:@selector(playButtonSelected)];        
         CCMenuItemImage *back = [CCMenuItemImage itemFromNormalImage:@"mainMenu.png" selectedImage:@"mainMenu-selected.png" target:self selector:@selector(mainMenuButtonSelected)];
-        CCMenuItemImage *achivements = [CCMenuItemImage itemFromNormalImage:@"playMenuItem.png" selectedImage:@"playMenuItem-selected.png" target:self selector:@selector(achivementsButtonSelected)];        
-        CCMenuItemImage *leaderboard = [CCMenuItemImage itemFromNormalImage:@"playMenuItem.png" selectedImage:@"playMenuItem-selected.png" target:self selector:@selector(leaderboardButtonSelected)];        
+        CCMenuItemImage *achivements = [CCMenuItemImage itemFromNormalImage:@"achievementMenuItem.png" selectedImage:@"achievementMenuItem-selected.png" target:self selector:@selector(achivementsButtonSelected)];        
+        CCMenuItemImage *leaderboard = [CCMenuItemImage itemFromNormalImage:@"leaderboardMenuItem.png" selectedImage:@"leaderboardMenuItem-selected.png" target:self selector:@selector(leaderboardButtonSelected)];        
 
-        CCMenu *menu = [CCMenu menuWithItems:back, play, achivements, leaderboard, nil];
+        CCMenu *menu = [CCMenu menuWithItems:back, play, leaderboard, achivements, nil];
         menu.position =  ccp( screenSize.width /2 , screenSize.height/2);
         [menu alignItemsVertically];
         [self addChild:menu];

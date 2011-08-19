@@ -8,6 +8,11 @@
  </tileset>
  <tileset firstgid="513" name="meta_tiles" tilewidth="64" tileheight="64">
   <image source="meta_tiles.png" width="134" height="68"/>
+  <tile id="0">
+   <properties>
+    <property name="collision" value="YES"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="base" width="50" height="50">
   <data encoding="base64" compression="zlib">
@@ -24,4 +29,7 @@
    eJztlcEShDAIQ7v7/x/tdXUapF3aQCeZ6aEVhWcEW2vt8627fjUSGylxiEMc4hDHPoadHNnV46goceSSODhCM0gc62TN/ZM4nrHWOVMn+YH21ThO8UP90d8zpP64x7Gl/rjHsRXZH9Y7Wa1IPzJzoHrReVaOSn6gfTWOU+ZV5P+D4cUzb4QfTA5PTbs5UF70/Kx+eOod4ejVW5GDNa9mONB+hGPWA3QPyw9refP14rzXovojOwfTD0sj37A4cnF4n/HGMbvealidQ5L+1QUB5wj4
   </data>
  </layer>
+ <objectgroup name="player" width="50" height="50">
+  <object name="player" x="676" y="2728" width="56" height="49"/>
+ </objectgroup>
 </map>
