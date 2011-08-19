@@ -84,6 +84,7 @@ typedef enum
     
     int pointCounter; // Scoring
     BOOL inTransition; // Transitioning between scenes
+    BOOL shouldGetLicenseDiscount;
     
 }
 @property (nonatomic, retain) CCSprite *mainPlayer; // Eventually, make this a real player class

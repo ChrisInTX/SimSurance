@@ -69,4 +69,4 @@
 #define kAchievementPassedMilitaryLevel @"military_base"
 #define kAchievementPassedHospitalLevel @"life_saver"
 #define kAchievementPassedRecklessDriver @"reckless_driver"
-
+#define kAchievementPassedLicenseDiscount @"license_discount"

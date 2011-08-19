@@ -427,7 +427,7 @@ static GameScene* instanceOfGameScene;
 		self.isTouchEnabled = YES;
 		pointCounter = 0;
         inTransition = NO;
-        
+        shouldGetLicenseDiscount = NO;
         // Load our various layers and set them to not visable (since they are 'meta' properties anyways)
         switch (self.level) {
             case GameLevelDriversEd: //Drivers Ed tutorial
@@ -489,6 +489,10 @@ static GameScene* instanceOfGameScene;
                 break;
         }
         
+        if (self.level != GameLevelDriversEd) {
+            shouldGetLicenseDiscount = [[NSUserDefaults standardUserDefaults] boolForKey:@"discountEarned"];
+        }
+        
         // Add a 'contact listener' for Collision Detection in Box2D
         contactListener = new MyContactListener();
         self.world->SetContactListener(contactListener);
@@ -510,6 +514,12 @@ static GameScene* instanceOfGameScene;
             self.gameCenterManager = [[[GameCenterManager alloc] init] autorelease];
             [self.gameCenterManager setDelegate:self];
             [self.gameCenterManager authenticateLocalUser];
+            if (shouldGetLicenseDiscount) {
+                
+                [self.gameCenterManager submitAchievement: kAchievementPassedLicenseDiscount percentComplete: 100.0];
+                [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"gk-icon.png"]];
+                [[GKAchievementHandler defaultHandler] notifyAchievementTitle:@"Driver's License Discount" andMessage:@"What a great driver!  You earned a discount because you completed Driver's Ed!"];
+            }
         }
     }
     
@@ -600,6 +610,7 @@ static GameScene* instanceOfGameScene;
             case GameLevelDriversEd:
                 NSLog(@"** Rearched End of Level 0");
                 [self showEndOfLevelSceneForLevel:level];
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"discountEarned"];
                 break;
             case GameLevelBasicTraining:
                 NSLog(@"** Rearched End of Level 1");
@@ -749,7 +760,7 @@ static BOOL hit = YES;
                 }
                 // Hitting the truck is a big no-no!!
             } else if (spriteA.tag == GameSceneHummerTag && spriteB.tag == GameScenePlayerTag) {
-                [self.gameHUD updatePointCounter:-15 withMessage:@"OHHH, NOT MY TRUCK!"];
+                [self.gameHUD updatePointCounter:-15 withMessage:@"OH, NOT MY TRUCK!"];
                 [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
                 // Hitting the houses on the non-Drivers Ed maps
             } else if (spriteA.tag == GameSceneBlockTag && spriteB.tag == GameScenePlayerTag) {
@@ -758,7 +769,8 @@ static BOOL hit = YES;
                 static CGPoint lastPos = CGPointMake(0, 0);
                 thisPos = spriteA.position;
                 if (!CGPointEqualToPoint(thisPos, lastPos)) {
-                    [self.gameHUD updatePointCounter:-250 withMessage:@"Collision Claim -$250!"];
+                    !shouldGetLicenseDiscount ? [self.gameHUD updatePointCounter:-500 withMessage:@"Collision Claim -$500!"] : 
+                                               [self.gameHUD updatePointCounter:-250 withMessage:@"Discounted Collision  -$250!"];
                     if (self.level == GameLevelDriversEd) {
                         [spriteB setTexture:[[CCTextureCache sharedTextureCache] addImage:@"sport_red_wreck.png"]];
                     }

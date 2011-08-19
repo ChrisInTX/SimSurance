@@ -24,11 +24,11 @@
 		[self addChild:uiframe z:-1];
 		
         NSString *amount = @"";
-        if ([[GameScene sharedGameScene] level] == GameLevelDriversEd) {
+        if ([[GameScene sharedGameScene] level] == GameLevelDriversEd || [[GameScene sharedGameScene] level] == GameLevelBasicTraining) {
             dollarAmount = 100;
             amount = [NSString stringWithFormat:@"%i Points", dollarAmount];
         } else {
-            dollarAmount = 5000;
+            dollarAmount = 7500;
             amount = [NSString stringWithFormat:@"$%i", dollarAmount];
         }
         
@@ -65,7 +65,7 @@
 -(void) updatePointCounter:(int)amount
 {
     
-    if ([[GameScene sharedGameScene] level] == GameLevelDriversEd) {
+    if ([[GameScene sharedGameScene] level] == GameLevelDriversEd || [[GameScene sharedGameScene] level] == GameLevelBasicTraining) {
         dollarAmount += amount;
         if (dollarAmount < 75 && dollarAmount > 50) {
             [amountLabel setColor:ccORANGE];
