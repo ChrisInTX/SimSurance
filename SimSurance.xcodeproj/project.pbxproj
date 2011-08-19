@@ -15,7 +15,6 @@
 		83021C4D13FB83CD00FF7260 /* gk-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4613FB83CD00FF7260 /* gk-icon@2x.png */; };
 		83021C4E13FB83CD00FF7260 /* gk-notification.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4713FB83CD00FF7260 /* gk-notification.png */; };
 		83021C4F13FB83CD00FF7260 /* gk-notification@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4813FB83CD00FF7260 /* gk-notification@2x.png */; };
-		83021C5013FB83CD00FF7260 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 83021C4913FB83CD00FF7260 /* LICENSE */; };
 		8342D25513FE1B030016B141 /* About04Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1C113FE1B030016B141 /* About04Font.ttf */; };
 		8342D25613FE1B030016B141 /* aboutMenuItem-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1C213FE1B030016B141 /* aboutMenuItem-selected.png */; };
 		8342D25713FE1B030016B141 /* aboutMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1C313FE1B030016B141 /* aboutMenuItem.png */; };
@@ -72,7 +71,6 @@
 		8342D28E13FE1B030016B141 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1FA13FE1B030016B141 /* Icon@2x.png */; };
 		8342D28F13FE1B030016B141 /* iconProto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1FB13FE1B030016B141 /* iconProto.png */; };
 		8342D29013FE1B030016B141 /* iconProto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1FC13FE1B030016B141 /* iconProto2.png */; };
-		8342D29113FE1B030016B141 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1FD13FE1B030016B141 /* Info.plist */; };
 		8342D29213FE1B030016B141 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1FE13FE1B030016B141 /* iTunesArtwork */; };
 		8342D29313FE1B030016B141 /* jeep.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D1FF13FE1B030016B141 /* jeep.png */; };
 		8342D29413FE1B030016B141 /* level1MenuItem-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 8342D20013FE1B030016B141 /* level1MenuItem-disabled.png */; };
@@ -309,7 +307,6 @@
 		A29AECCE13AC41BD00923A65 /* SimSuranceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AECCD13AC41BD00923A65 /* SimSuranceConstants.m */; };
 		A2A2AA3413B44C87006D8141 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A2AA3313B44C87006D8141 /* PauseLayer.mm */; };
 		A2BE41BD13B7E6C700FB1A83 /* ColoredCircleSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE41B113B7E6C700FB1A83 /* ColoredCircleSprite.m */; };
-		A2BE41BF13B7E6C700FB1A83 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A2BE41B413B7E6C700FB1A83 /* LICENSE */; };
 		A2BE41C013B7E6C700FB1A83 /* SneakyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE41B613B7E6C700FB1A83 /* SneakyButton.m */; };
 		A2BE41C113B7E6C700FB1A83 /* SneakyButtonSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE41B813B7E6C700FB1A83 /* SneakyButtonSkinnedBase.m */; };
 		A2BE41C213B7E6C700FB1A83 /* SneakyJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BE41BA13B7E6C700FB1A83 /* SneakyJoystick.m */; };
@@ -1689,12 +1686,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BE41BF13B7E6C700FB1A83 /* LICENSE in Resources */,
 				83021C4C13FB83CD00FF7260 /* gk-icon.png in Resources */,
 				83021C4D13FB83CD00FF7260 /* gk-icon@2x.png in Resources */,
 				83021C4E13FB83CD00FF7260 /* gk-notification.png in Resources */,
 				83021C4F13FB83CD00FF7260 /* gk-notification@2x.png in Resources */,
-				83021C5013FB83CD00FF7260 /* LICENSE in Resources */,
 				8342D25513FE1B030016B141 /* About04Font.ttf in Resources */,
 				8342D25613FE1B030016B141 /* aboutMenuItem-selected.png in Resources */,
 				8342D25713FE1B030016B141 /* aboutMenuItem.png in Resources */,
@@ -1751,7 +1746,6 @@
 				8342D28E13FE1B030016B141 /* Icon@2x.png in Resources */,
 				8342D28F13FE1B030016B141 /* iconProto.png in Resources */,
 				8342D29013FE1B030016B141 /* iconProto2.png in Resources */,
-				8342D29113FE1B030016B141 /* Info.plist in Resources */,
 				8342D29213FE1B030016B141 /* iTunesArtwork in Resources */,
 				8342D29313FE1B030016B141 /* jeep.png in Resources */,
 				8342D29413FE1B030016B141 /* level1MenuItem-disabled.png in Resources */,
