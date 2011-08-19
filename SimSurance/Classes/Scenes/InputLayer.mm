@@ -27,13 +27,13 @@
         
         switch ([[GameScene sharedGameScene] level]) {
             case GameLevelDriversEd:
-                maxSpeed = 7;
+                maxSpeed = 6;
                 break;
             case GameLevelBasicTraining:
-                maxSpeed = 3;
+                maxSpeed = 2;
                 break;
             case GameLevelHospital:
-                maxSpeed = 5;
+                maxSpeed = 4;
                 break;
             default:
                 break;
@@ -60,7 +60,7 @@
 	skinStick.backgroundSprite = [CCSprite spriteWithFile:@"steering_wheel.png"];
     skinStick.thumbSprite.color = ccBLACK;
     skinStick.thumbSprite = [ColoredCircleSprite circleWithColor:ccc4(100, 100, 100, 100) radius:48];
-    joystick.deadRadius = 20;
+    //joystick.deadRadius = 20;
 	skinStick.joystick = joystick;
 	[self addChild:skinStick z:0 tag:12];
 }
@@ -109,10 +109,10 @@
             [GameScene sharedGameScene].steeringAngle = 0.0f;
         }
         else if(scaledVelocity.x > 0) { // If the wheel is to the right
-            [GameScene sharedGameScene].steeringAngle = 0.085f;
+            [GameScene sharedGameScene].steeringAngle = 0.1f;
         }
         else { // If the wheel is to the left
-            [GameScene sharedGameScene].steeringAngle = -0.085f;
+            [GameScene sharedGameScene].steeringAngle = -0.1f;
         }
     }
 	

@@ -589,7 +589,6 @@ static GameScene* instanceOfGameScene;
                     if (self.level == GameLevelDriversEd) {
                         [self playerReachedEndOfLevel:GameLevelDriversEd];
                     }
-                    move = NO;  // added for neighborhood level
                 } else if (victory && [victory isEqualToString:@"YES"]) {
                     switch (self.level) {
                         case GameLevelBasicTraining:
@@ -602,7 +601,8 @@ static GameScene* instanceOfGameScene;
                             break;
                     }
                 }
-                
+                move = NO;  // added for neighborhood level
+
             }
         } else if (tileGid2) { 
             NSDictionary *properties = [self.tiledMap propertiesForGID:tileGid2];
@@ -610,6 +610,7 @@ static GameScene* instanceOfGameScene;
                 NSString *victory = [properties valueForKey:@"victory"];
                 
                 if (victory && [victory isEqualToString:@"YES"]) {
+                    move = NO;
                     switch (self.level) {
                         case GameLevelBasicTraining:
                             [self playerReachedEndOfLevel:GameLevelBasicTraining];
@@ -766,8 +767,8 @@ static BOOL hit = YES;
             // For Drivers Ed, at least, we will always fall into this trap since Player is hitting Cone
             // Sprite A = cone, Sprite B = player
             else if (spriteA.tag == GameSceneHazardTag && spriteB.tag == GameScenePlayerTag) {
-                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
-                    toDestroy.push_back(bodyA); // Not sure what this does...
+                //if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    // toDestroy.push_back(bodyB); // Not sure what this does...
                     [self setRandomConePositionForSprite:spriteA];
                     CGPoint newPosition = CGPointMake( bodyA->GetPosition().x * PTM_RATIO, bodyA->GetPosition().y * PTM_RATIO);
                     spriteA.position = newPosition;
@@ -782,7 +783,7 @@ static BOOL hit = YES;
                         [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"gk-icon.png"]];
                         [[GKAchievementHandler defaultHandler] notifyAchievementTitle:@"Reckless Driver" andMessage:@"Congrats!  You have successfully ruined my car!"];
                     }
-                }
+                //}
                 // Hitting the truck is a big no-no!!
             } else if (spriteA.tag == GameSceneHummerTag && spriteB.tag == GameScenePlayerTag) {
                 [self.gameHUD updatePointCounter:-15 withMessage:@"OH, NOT MY TRUCK!"];
@@ -864,7 +865,7 @@ static BOOL hit = YES;
         {
             NSLog(@"** Player won Achivement Sir, Yes Sir!");
             award = kAchievementPassedMilitaryLevel;
-            awardTitle = @"Earned Driver's License";
+            awardTitle = @"Sir! Yes, Sir!";
             awardText = @"Way to go, soldier!  You are now allowed to drive the simplest of machines, don't hurt your head!";
             percentComplete = 100.0;
         }
