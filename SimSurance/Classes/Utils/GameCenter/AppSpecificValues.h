@@ -68,4 +68,5 @@
 #define kAchievementPlayedAllLevels @"play_all_levels"
 #define kAchievementPassedMilitaryLevel @"military_base"
 #define kAchievementPassedHospitalLevel @"life_saver"
+#define kAchievementPassedRecklessDriver @"reckless_driver"
 
