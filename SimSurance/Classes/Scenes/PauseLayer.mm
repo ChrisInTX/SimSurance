@@ -112,7 +112,7 @@
     
     BOOL playMusic = [[NSUserDefaults standardUserDefaults] boolForKey:@"playBackgroundMusic"];
     musicSwitch = [[ UISwitch alloc ] initWithFrame: CGRectMake(screenSize.width/2+15, 525, 0,0) ];
-    musicSwitch.on = !playMusic;  //set to be ON at start
+    musicSwitch.on = playMusic;  //set to be ON at start
     musicSwitch.tag = 1;    // this is not necessary - only to find later
     [musicSwitch addTarget:self action:@selector(muteMusic) forControlEvents:UIControlEventValueChanged];
     [[[CCDirector sharedDirector] openGLView] addSubview:musicSwitch];
