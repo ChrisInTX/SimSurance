@@ -113,7 +113,7 @@
                 break;
             case LevelSplashEight:
                 
-                backgroundImage = @"levelOneSplash.png";
+                backgroundImage = @"levelEightSplash.png";
                 backButton = [CCMenuItemImage itemFromNormalImage:@"goButton.png" selectedImage:@"goButton-selected.png" target:self selector:@selector(goToHospital)];
                 
                 break;

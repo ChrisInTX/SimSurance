@@ -45,24 +45,31 @@
 }
 - (void)mainMenuButtonSelected  
 {
+    if (musicSwitch && musicSwitch.superview) {
+        [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
+        musicSwitch = nil;
+    }
+    
     CCLOG(@"Main Menu button selected, popping...");
     [[GameScene sharedGameScene] setShowingPausedMenu:NO];
     [[CCDirector sharedDirector] resume];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitRows transitionWithDuration:1.0 scene:[MainMenuScene scene]]];
     [[GameScene sharedGameScene] removeChildByTag:GameScenePauseTag cleanup:YES];
-    if (musicSwitch) {
-        [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
-    }
+    
 }
 
 -(void)playButtonSelected
 {
+    if (musicSwitch && musicSwitch.superview) {
+        [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
+        musicSwitch = nil;
+    }
+    
     [[GameScene sharedGameScene] setShowingPausedMenu:NO];
     [[CCDirector sharedDirector] resume];
+    
     [[GameScene sharedGameScene] removeChildByTag:GameScenePauseTag cleanup:YES];
-    if (musicSwitch) {
-        [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
-    }
+   
 
 }
 
@@ -109,7 +116,7 @@
     musicSwitch.tag = 1;    // this is not necessary - only to find later
     [musicSwitch addTarget:self action:@selector(muteMusic) forControlEvents:UIControlEventValueChanged];
     [[[CCDirector sharedDirector] openGLView] addSubview:musicSwitch];
-    [musicSwitch release];   // don't forget to release memory
+    //[musicSwitch release];   // don't forget to release memory
 }
 
 - (void)muteMusic
