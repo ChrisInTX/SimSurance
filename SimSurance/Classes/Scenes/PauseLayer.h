@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 
 @interface PauseLayer : CCLayerColor <CCTargetedTouchDelegate> {
-    
+    UISwitch *musicSwitch;
 }
 - (void)updateMainLabelWithText:(NSString *)text;
 @end

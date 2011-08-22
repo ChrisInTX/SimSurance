@@ -34,13 +34,13 @@
         
         // These values are hard coded for Drivers Ed, should be refacotred for more flexability
 		amountLabel = [CCLabelTTF labelWithString:amount fontName:@"Marker Felt" fontSize:22];
-		amountLabel.color = ccRED;
+		amountLabel.color = ccWHITE;
 		amountLabel.position = CGPointMake(188,753);
 		amountLabel.anchorPoint = CGPointMake(0.5f, 1);
 		[self addChild:amountLabel z:0 tag:kAmountLabel];
 
-		messageLabel = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:55];
-		messageLabel.color = ccRED;
+		messageLabel = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:36];
+		messageLabel.color = ccYELLOW;
 		messageLabel.position = CGPointMake(700,740);
 		messageLabel.anchorPoint = CGPointMake(0.5f, 1);
 		[self addChild:messageLabel z:0 tag:kMessageLabel];
@@ -82,6 +82,8 @@
             [amountLabel setColor:ccORANGE];
         } else if (dollarAmount < 2000 && dollarAmount > 0) {
             [amountLabel setColor:ccYELLOW];
+        } else if (dollarAmount > 4000) {
+            [amountLabel setColor:ccWHITE];
         } else {
             [amountLabel setColor:ccRED];
         }

@@ -9,6 +9,7 @@
 #import "PauseLayer.h"
 #import "GameScene.h"
 #import "MainMenuScene.h"
+#import "SimpleAudioEngine.h"
 
 @implementation PauseLayer
 
@@ -19,7 +20,7 @@
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Game Paused!" fontName:@"Marker Felt" fontSize:45];
-		label.color = ccBLACK;
+		label.color = ccWHITE;
 		label.position = CGPointMake(screenSize.width/2,screenSize.height/2+200);
 		//label.anchorPoint = CGPointMake(0.5f, 1);
 		[self addChild:label z:0 tag:1000];
@@ -49,7 +50,9 @@
     [[CCDirector sharedDirector] resume];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionSplitRows transitionWithDuration:1.0 scene:[MainMenuScene scene]]];
     [[GameScene sharedGameScene] removeChildByTag:GameScenePauseTag cleanup:YES];
-
+    if (musicSwitch) {
+        [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
+    }
 }
 
 -(void)playButtonSelected
@@ -57,6 +60,10 @@
     [[GameScene sharedGameScene] setShowingPausedMenu:NO];
     [[CCDirector sharedDirector] resume];
     [[GameScene sharedGameScene] removeChildByTag:GameScenePauseTag cleanup:YES];
+    if (musicSwitch) {
+        [musicSwitch removeFromSuperview]; // Need to remove the Switch from the OpenGL view manually (Since its a UIKit Element)
+    }
+
 }
 
 - (void)achivementsButtonSelected {
@@ -75,5 +82,50 @@
 {
 	[super dealloc];
 }
+
+- (void)onEnterTransitionDidFinish {
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    
+    [super onEnterTransitionDidFinish];
+    
+    NSString *labelText = @"Music";
+    CGSize maxSize = { 2450, 2000 };
+    CGSize actualSize = [labelText sizeWithFont:[UIFont fontWithName:@"AmericanTypewriter-Bold" size:32]
+                              constrainedToSize:maxSize
+                                  lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGSize containerSize = { actualSize.width, actualSize.height };
+    CCLabelTTF *label = [CCLabelTTF labelWithString:labelText dimensions:containerSize
+                                          alignment:UITextAlignmentCenter
+                                           fontName:@"AmericanTypewriter-Bold"
+                                           fontSize:32];
+    label.color = ccWHITE;
+    label.position =  ccp( screenSize.width /2-60 , 230 );
+    [self addChild:label];
+    
+    BOOL playMusic = [[NSUserDefaults standardUserDefaults] boolForKey:@"playBackgroundMusic"];
+    musicSwitch = [[ UISwitch alloc ] initWithFrame: CGRectMake(screenSize.width/2+15, 525, 0,0) ];
+    musicSwitch.on = !playMusic;  //set to be ON at start
+    musicSwitch.tag = 1;    // this is not necessary - only to find later
+    [musicSwitch addTarget:self action:@selector(muteMusic) forControlEvents:UIControlEventValueChanged];
+    [[[CCDirector sharedDirector] openGLView] addSubview:musicSwitch];
+    [musicSwitch release];   // don't forget to release memory
+}
+
+- (void)muteMusic
+{
+    
+    if([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+    {
+        [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
+    } else {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"My Dog Blue.mp3"];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setBool:musicSwitch.on forKey:@"playBackgroundMusic"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 
 @end
